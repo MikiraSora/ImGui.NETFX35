@@ -71,7 +71,16 @@ namespace ImGuiNET
 
         internal static int GetUtf8(string s, byte* utf8Bytes, int utf8ByteCount)
         {
+            /* WARN: unity5.x mono jit will crash by wrong cast.
             fixed (char* utf16Ptr = s)
+            {
+                return Encoding.UTF8.GetBytes(utf16Ptr, s.Length, utf8Bytes, utf8ByteCount);
+            }
+            */
+            var charArr = s.ToCharArray();
+            if (charArr.Length == 0)
+                return 0;
+            fixed (char* utf16Ptr = charArr)
             {
                 return Encoding.UTF8.GetBytes(utf16Ptr, s.Length, utf8Bytes, utf8ByteCount);
             }
