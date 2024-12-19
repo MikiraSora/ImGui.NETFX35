@@ -1,3 +1,7 @@
+### Fork Notice:
+This forked repo is only for .net framework 3.5 and unity 5.x
+So there are some breakchanges and compatible implement.
+
 # ImGui.NET
 
 This is a .NET wrapper for the immediate mode GUI library, Dear ImGui (https://github.com/ocornut/imgui). ImGui.NET lets you build graphical interfaces using a simple immediate-mode style. ImGui.NET is a .NET Standard library, and can be used on all major .NET runtimes and operating systems.
