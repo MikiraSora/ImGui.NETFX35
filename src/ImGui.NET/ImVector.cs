@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
+using ImGuiNET.FXCompatible.System.Runtime.CompilerServices;
 
 namespace ImGuiNET
 {

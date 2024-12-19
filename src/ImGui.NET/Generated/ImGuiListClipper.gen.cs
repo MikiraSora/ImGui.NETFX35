@@ -1,6 +1,6 @@
 using System;
-using System.Numerics;
-using System.Runtime.CompilerServices;
+using ImGuiNET.FXCompatible.System.Numerics;
+using ImGuiNET.FXCompatible.System.Runtime.CompilerServices;
 using System.Text;
 
 namespace ImGuiNET

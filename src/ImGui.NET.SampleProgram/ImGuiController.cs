@@ -39,7 +39,7 @@ namespace ImGuiNET
 
         private int _windowWidth;
         private int _windowHeight;
-        private Vector2 _scaleFactor = Vector2.One;
+        private FXCompatible.System.Numerics.Vector2 _scaleFactor = new(1, 1);
 
         // Image trackers
         private readonly Dictionary<TextureView, ResourceSetInfo> _setsByView
@@ -206,25 +206,25 @@ namespace ImGuiNET
             switch (factory.BackendType)
             {
                 case GraphicsBackend.Direct3D11:
-                {
-                    string resourceName = name + ".hlsl.bytes";
-                    return GetEmbeddedResourceBytes(resourceName);
-                }
+                    {
+                        string resourceName = name + ".hlsl.bytes";
+                        return GetEmbeddedResourceBytes(resourceName);
+                    }
                 case GraphicsBackend.OpenGL:
-                {
-                    string resourceName = name + ".glsl";
-                    return GetEmbeddedResourceBytes(resourceName);
-                }
+                    {
+                        string resourceName = name + ".glsl";
+                        return GetEmbeddedResourceBytes(resourceName);
+                    }
                 case GraphicsBackend.Vulkan:
-                {
-                    string resourceName = name + ".spv";
-                    return GetEmbeddedResourceBytes(resourceName);
-                }
+                    {
+                        string resourceName = name + ".spv";
+                        return GetEmbeddedResourceBytes(resourceName);
+                    }
                 case GraphicsBackend.Metal:
-                {
-                    string resourceName = name + ".metallib";
-                    return GetEmbeddedResourceBytes(resourceName);
-                }
+                    {
+                        string resourceName = name + ".metallib";
+                        return GetEmbeddedResourceBytes(resourceName);
+                    }
                 default:
                     throw new NotImplementedException();
             }
@@ -319,7 +319,7 @@ namespace ImGuiNET
         private void SetPerFrameImGuiData(float deltaSeconds)
         {
             ImGuiIOPtr io = ImGui.GetIO();
-            io.DisplaySize = new Vector2(
+            io.DisplaySize = new(
                 _windowWidth / _scaleFactor.X,
                 _windowHeight / _scaleFactor.Y);
             io.DisplayFramebufferScale = _scaleFactor;

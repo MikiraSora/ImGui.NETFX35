@@ -1,5 +1,6 @@
-﻿using System;
-using System.Runtime.CompilerServices;
+﻿using ImGuiNET.FXCompatible.System.Text;
+using System;
+using ImGuiNET.FXCompatible.System.Runtime.CompilerServices;
 using System.Text;
 
 namespace ImGuiNET
@@ -62,7 +63,7 @@ namespace ImGuiNET
     {
         public static unsafe string GetStringASCII(this RangeAccessor<byte> stringAccessor)
         {
-            return Encoding.ASCII.GetString((byte*)stringAccessor.Data, stringAccessor.Count);
+            return Encoding.ASCII.GetStringFromPtr((byte*)stringAccessor.Data, stringAccessor.Count);
         }
     }
 }

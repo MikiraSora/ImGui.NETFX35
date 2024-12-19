@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImGuiNET.FXCompatible.System.Text;
+using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -16,7 +17,7 @@ namespace ImGuiNET
                 characters++;
             }
 
-            return Encoding.UTF8.GetString(ptr, characters);
+            return Encoding.UTF8.GetStringFromPtr(ptr, characters);
         }
 
         internal static bool AreStringsEqual(byte* a, int aLength, byte* b)

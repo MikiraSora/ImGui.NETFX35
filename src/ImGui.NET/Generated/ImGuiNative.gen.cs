@@ -1,5 +1,5 @@
 using System;
-using System.Numerics;
+using ImGuiNET.FXCompatible.System.Numerics;
 using System.Runtime.InteropServices;
 
 namespace ImGuiNET

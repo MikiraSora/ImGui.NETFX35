@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
-using ImPlotNET;
 using System.Runtime.CompilerServices;
 using TestDotNetStandardLib;
 using Veldrid;
@@ -128,7 +127,7 @@ namespace ImGuiNET
             {
                 // Normally user code doesn't need/want to call this because positions are saved in .ini file anyway.
                 // Here we just want to make the demo initial state a bit more friendly!
-                ImGui.SetNextWindowPos(new Vector2(650, 20), ImGuiCond.FirstUseEver);
+                ImGui.SetNextWindowPos(new (650, 20), ImGuiCond.FirstUseEver);
                 ImGui.ShowDemoWindow(ref _showImGuiDemoWindow);
             }
             
@@ -220,13 +219,13 @@ namespace ImGuiNET
             Console.WriteLine("GC (string): " + allocBytesStringEnd);
                 
             long allocBytesSpanStart = GC.GetAllocatedBytesForCurrentThread();
-            ImGui.Text($"Hello, world {Random.Shared.Next(100)}!".AsSpan()); // Note that this call will STILL allocate memory due to string interpolation, but you can prevent that from happening by using an InterpolatedStringHandler.
+            ImGui.Text($"Hello, world {Random.Shared.Next(100)}!"); // Note that this call will STILL allocate memory due to string interpolation, but you can prevent that from happening by using an InterpolatedStringHandler.
             long allocBytesSpanEnd = GC.GetAllocatedBytesForCurrentThread() - allocBytesSpanStart;
             Console.WriteLine("GC (span): " + allocBytesSpanEnd);
             
             ImGui.Text("Empty span:");
             ImGui.SameLine();
-            ImGui.GetWindowDrawList().AddText(ImGui.GetCursorScreenPos(), uint.MaxValue, ReadOnlySpan<char>.Empty);
+            ImGui.GetWindowDrawList().AddText(ImGui.GetCursorScreenPos(), uint.MaxValue, string.Empty);
             ImGui.NewLine();
             ImGui.GetWindowDrawList().AddText(ImGui.GetCursorScreenPos(), uint.MaxValue, $"{ImGui.CalcTextSize("h")}");
             ImGui.NewLine();

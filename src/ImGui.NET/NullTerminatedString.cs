@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using ImGuiNET.FXCompatible.System.Text;
+using System.Text;
 
 namespace ImGuiNET
 {
@@ -21,7 +22,7 @@ namespace ImGuiNET
                 ptr += 1;
             }
 
-            return Encoding.ASCII.GetString(Data, length);
+            return Encoding.ASCII.GetStringFromPtr(Data, length);
         }
 
         public static implicit operator string(NullTerminatedString nts) => nts.ToString();
